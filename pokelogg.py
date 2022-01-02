@@ -11,14 +11,19 @@ print("Database Opened Success")
 
 def user_view_all():
     cursor.execute("SELECT * FROM pokemon")
-    print(cursor.fetchone())
+    print(cursor.fetchall())
     print('Query Successful!')
 
 
 def user_search_name_params():
     searchNameInput = input('Please input the name of the card you are looking up: ').upper()
-    cursor.execute("SELECT * FROM pokemon WHERE name=(?)", [searchNameInput])
-    print(cursor.fetchall())
+    searchNameInputIfLike = input(f"Do you want to search for all names like {searchNameInput}?(y/n): ")
+    if searchNameInputIfLike == 'n':
+        cursor.execute("SELECT * FROM pokemon WHERE name=(?)", [searchNameInput])
+        print(cursor.fetchall())
+    elif searchNameInputIfLike == 'y':
+        cursor.execute("SELECT * FROM pokemon WHERE name LIKE (?)", ['%'+searchNameInput+'%'])
+        print(cursor.fetchall())
 
 
 def user_delete_entry():
@@ -74,6 +79,7 @@ while mainWhileLooper:
               "\nHelp - Resonds with a help message."
               "\nEntry - Start a card data entry!"
               "\nView All - Views all the entries in the 'pokemon' table."
+              "\nSName - Searches the database by name."
               "\nDelete - Start the deletion process of a data entry. \n        You might need to find the specific "
               "entry ID before trying "
               " to delete it."
