@@ -1,2 +1,2 @@
 # PokeLogger
- Log your pokemon cards locally.
+ Log your pokemon cards locally. Python 3.
