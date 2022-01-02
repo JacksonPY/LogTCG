@@ -16,13 +16,15 @@ def user_view_all():
 
 
 def user_search_name_params():
-    cursor.execute("SELECT * FROM pokemon")
+    searchNameInput = input('Please input the name of the card you are looking up: ').upper()
+    cursor.execute("SELECT * FROM pokemon WHERE name=(?)", [searchNameInput])
+    print(cursor.fetchall())
 
 
 def user_delete_entry():
     userDefinedDeletionID = input('What is the ID (first number in the data entry) of the entry you would like to '
                                   'delete?: ')
-    cursor.execute("DELETE FROM pokemon WHERE id=(?)", (userDefinedDeletionID))
+    cursor.execute("DELETE FROM pokemon WHERE id=(?)", userDefinedDeletionID)
     con.commit()
     print('Entry deleted')
 
@@ -40,6 +42,7 @@ print('')
 print('Need help? Just type "help"!')
 mainWhileLooper = True
 while mainWhileLooper:
+    keepTheLoopCount = 0
     # first response
     startProgUser = input("Welcome, what would you like to do?\n").upper()
 
@@ -76,7 +79,10 @@ while mainWhileLooper:
               " to delete it."
               "\nExit - Exits the program/main loop.")
     elif startProgUser == 'EXIT':
-        mainWhileLooper = False
+        break
+
+    elif startProgUser == 'SNAME':
+        user_search_name_params()
 
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
