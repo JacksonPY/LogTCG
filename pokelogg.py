@@ -4,7 +4,7 @@ import sqlite3 as sl
 
 
 # establishing connection
-con = sl.connect('data/local.db')
+con = sl.connect('databases/local.db')
 cursor = con.cursor()
 print('')
 print("Database Opened Success")
