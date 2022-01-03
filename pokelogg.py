@@ -2,8 +2,9 @@
 import os
 import sqlite3 as sl
 
+
 # establishing connection
-con = sl.connect('local.db')
+con = sl.connect('data/local.db')
 cursor = con.cursor()
 print('')
 print("Database Opened Success")
