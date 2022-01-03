@@ -31,3 +31,13 @@ def user_search_type():
     userDefinedType = input('What is the type you would like to search for?: ').upper()
     cursor.execute("SELECT * FROM pokemon WHERE type=(?)", [userDefinedType])
     print(cursor.fetchall())
+
+def user_search_rarity():
+    userDefinedRarity = input('What is the rarity you would like to search for?: ').upper()
+    cursor.execute("SELECT * FROM pokemon WHERE rarity=(?)", [userDefinedRarity])
+    print(cursor.fetchall())
+
+def user_search_cardset():
+    userDefinedCardset = input('What is the set you would like to search for?: ').upper()
+    cursor.execute("SELECT * FROM pokemon WHERE cardset=(?)", [userDefinedCardset])
+    print(cursor.fetchall())
