@@ -23,8 +23,8 @@ print('')
 print('Need help? Just type "help"!')
 mainWhileLooper = True
 while mainWhileLooper:
-    keepTheLoopCount = 0
     # first response
+    print('')
     startProgUser = input("Welcome, what would you like to do?\n").upper()
 
     # clear terminal
@@ -55,8 +55,10 @@ while mainWhileLooper:
               "\nHelp - Resonds with a help message."
               "\nEntry - Start a card data entry!"
               "\nView All - Views all the entries in the 'pokemon' table."
-              "\nSName - Searches the database by name."
-              "\nStype - Searches the database by name."
+              "\nsName - Searches the database by name."
+              "\nsType - Searches the database by type."
+              "\nsRarity - Searches the database by rarity."
+              "\nsCardset - Searches the database for the set of the card(s)."
               "\nDelete - Start the deletion process of a data entry. \n        You might need to find the specific "
               "entry ID before trying "
               " to delete it."
