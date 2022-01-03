@@ -28,3 +28,4 @@ Want to learn more about the SQLite module?  [Find more here](https://docs.pytho
 - Google Drive file sync
 - Custom table creation
 - More hands on entry editing
+- Import excel/sheets
