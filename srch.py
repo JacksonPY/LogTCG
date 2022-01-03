@@ -1,3 +1,8 @@
+import sqlite3 as sl
+
+con = sl.connect('databases/local.db')
+cursor = con.cursor()
+
 def user_view_all():
     cursor.execute("SELECT * FROM pokemon")
     print(cursor.fetchall())
@@ -21,3 +26,8 @@ def user_delete_entry():
     cursor.execute("DELETE FROM pokemon WHERE id=(?)", userDefinedDeletionID)
     con.commit()
     print('Entry deleted')
+
+def user_search_type():
+    userDefinedType = input('What is the type you would like to search for?: ').upper()
+    cursor.execute("SELECT * FROM pokemon WHERE type=(?)", [userDefinedType])
+    print(cursor.fetchall())

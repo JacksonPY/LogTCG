@@ -56,6 +56,7 @@ while mainWhileLooper:
               "\nEntry - Start a card data entry!"
               "\nView All - Views all the entries in the 'pokemon' table."
               "\nSName - Searches the database by name."
+              "\nStype - Searches the database by name."
               "\nDelete - Start the deletion process of a data entry. \n        You might need to find the specific "
               "entry ID before trying "
               " to delete it."
@@ -65,6 +66,9 @@ while mainWhileLooper:
 
     elif startProgUser == 'SNAME':
         user_search_name_params()
+
+    elif startProgUser == 'STYPE':
+        user_search_type()
 
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
