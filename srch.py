@@ -22,10 +22,11 @@ def user_search_name_params():
 
 def user_delete_entry():
     userDefinedDeletionID = input('What is the ID (first number in the data entry) of the entry you would like to '
-                                  'delete?: ')
+                                'delete?: ')
     cursor.execute("DELETE FROM pokemon WHERE id=(?)", userDefinedDeletionID)
     con.commit()
     print('Entry deleted')
+
 
 def user_search_type():
     userDefinedType = input('What is the type you would like to search for?: ').upper()
