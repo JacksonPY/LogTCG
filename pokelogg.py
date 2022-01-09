@@ -2,6 +2,7 @@
 import os
 import sqlite3 as sl
 from srch import *
+from hlp import *
 
 # establishing connection
 con = sl.connect('databases/local.db')
@@ -51,18 +52,8 @@ while mainWhileLooper:
         user_delete_entry()
 
     elif startProgUser == 'HELP':
-        print("Commands you can use to iterate upon the database. "
-              "\nHelp - Resonds with a help message."
-              "\nEntry - Start a card data entry!"
-              "\nView All - Views all the entries in the 'pokemon' table."
-              "\nsName - Searches the database by name."
-              "\nsType - Searches the database by type."
-              "\nsRarity - Searches the database by rarity."
-              "\nsCardset - Searches the database for the set of the card(s)."
-              "\nDelete - Start the deletion process of a data entry. \n        You might need to find the specific "
-              "entry ID before trying "
-              " to delete it."
-              "\nExit - Exits the program/main loop.")
+        user_help_me()
+
     elif startProgUser == 'EXIT':
         break
 
