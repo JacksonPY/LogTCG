@@ -47,28 +47,20 @@ while mainWhileLooper:
 
     elif startProgUser == 'VIEW ALL':
         user_view_all()
-
     elif startProgUser == 'DELETE':
         user_delete_entry()
-
     elif startProgUser == 'HELP':
         user_help_me()
-
     elif startProgUser == 'EXIT':
         break
-
     elif startProgUser == 'SNAME':
         user_search_name_params()
-
     elif startProgUser == 'STYPE':
         user_search_type()
-
     elif startProgUser == 'SRARITY':
         user_search_rarity()
-
     elif startProgUser == 'SCARDSET':
         user_search_cardset()
-
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
         print('Not a valid command. Please try again. If you need more help please type "help"')
