@@ -48,3 +48,16 @@ def user_search_cardset():
     userDefinedCardset = input('What is the set you would like to search for?: ').upper()
     cursor.execute("SELECT * FROM pokemon WHERE cardset=(?)", [userDefinedCardset])
     print(cursor.fetchall())
+
+def user_make_entry():
+    cardName = input("Input the card name: ").upper()
+    cardRarity = input("Input the card rarity: ").upper()
+    cardSet = input("Input the set name (Fusion Strike, Sword & Shield, etc.: ").upper()
+    cardType = input("What is the cards type: ").upper()
+
+    # executing the SQL insert statement into the 'pokemon' table. '?' denotes a placeholder for the variables
+    # from the user.
+    cursor.execute("INSERT INTO pokemon (name, rarity, cardset, type) VALUES (?,?,?,?)",
+                   (cardName, cardRarity, cardSet, cardType))
+    con.commit()
+    print("Entry successful")

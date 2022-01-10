@@ -1,3 +1,5 @@
+import os
+
 def user_help_me():
     print("Commands you can use to iterate upon the database. "
           "\nHelp - Resonds with a help message."
@@ -11,3 +13,6 @@ def user_help_me():
           "entry ID before trying "
           " to delete it."
           "\nExit - Exits the program/main loop.")
+
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')

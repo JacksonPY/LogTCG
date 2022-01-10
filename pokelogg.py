@@ -4,6 +4,8 @@ import sqlite3 as sl
 from srch import *
 from hlp import *
 
+
+
 # establishing connection
 con = sl.connect('databases/local.db')
 cursor = con.cursor()
@@ -20,47 +22,30 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS pokemon (
         type text
     )""")
 
+# dictionary to return a function based on users import. seems to be faster than massive elif block.
+tree = {'VIEW ALL':user_view_all,
+        'DELETE':user_delete_entry,
+        'HELP':user_help_me,
+        'SNAME':user_search_name_params,
+        'STYPE':user_search_type,
+        'SRARITY':user_search_rarity,
+        'SCARDSET':user_search_cardset,
+        'ENTRY':user_make_entry}
+
 print('')
 print('Need help? Just type "help"!')
 mainWhileLooper = True
 while mainWhileLooper:
-    # first response
-    print('')
     startProgUser = input("Welcome, what would you like to do?\n").upper()
 
-    # clear terminal
-    os.system('cls' if os.name == 'nt' else 'clear')
+    cls()
+    print('')
 
-    # Data entry, 4 parameters.
-    if startProgUser == 'ENTRY':
-        cardName = input("Input the card name: ").upper()
-        cardRarity = input("Input the card rarity: ").upper()
-        cardSet = input("Input the set name (Fusion Strike, Sword & Shield, etc.: ").upper()
-        cardType = input("What is the cards type: ").upper()
-
-        # executing the SQL insert statement into the 'pokemon' table. '?' denotes a placeholder for the variables
-        # from the user.
-        cursor.execute("INSERT INTO pokemon (name, rarity, cardset, type) VALUES (?,?,?,?)",
-                       (cardName, cardRarity, cardSet, cardType))
-        con.commit()
-        print("Entry successful")
-
-    elif startProgUser == 'VIEW ALL':
-        user_view_all()
-    elif startProgUser == 'DELETE':
-        user_delete_entry()
-    elif startProgUser == 'HELP':
-        user_help_me()
+    if startProgUser in tree:
+        tree.get(startProgUser)()
     elif startProgUser == 'EXIT':
+        print("Goodbye!")
+        cls()
         break
-    elif startProgUser == 'SNAME':
-        user_search_name_params()
-    elif startProgUser == 'STYPE':
-        user_search_type()
-    elif startProgUser == 'SRARITY':
-        user_search_rarity()
-    elif startProgUser == 'SCARDSET':
-        user_search_cardset()
     else:
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print('Not a valid command. Please try again. If you need more help please type "help"')
+        print("That's not a selection. Type 'help' to see the available selections.")
