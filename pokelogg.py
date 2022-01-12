@@ -22,7 +22,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS pokemon (
         type text
     )""")
 
-# dictionary to return a function based on users import. seems to be faster than massive elif block.
+# dictionary to return a function based on users input. seems to be faster than massive elif block.
 tree = {'VIEW ALL':user_view_all,
         'DELETE':user_delete_entry,
         'HELP':user_help_me,
