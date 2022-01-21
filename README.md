@@ -5,7 +5,7 @@ Log your pokemon cards locally. Hello! I wanted to make a nice little logging sy
 
 
 # Installation
-Clone or download this repo. Open a terminal at the directory of the download and follow the instructions below.
+Clone or download this repo. Open a terminal at the directory of the download and follow the instructions below. No external libraries required.
 
 Windows (its also possible windows users might need to use 'python' instead of 'py'!)
 ```bash
