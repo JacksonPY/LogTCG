@@ -25,7 +25,7 @@ Typing 'help' will show a list of commands.
 Want to learn more about the SQLite module?  [Find more here](https://docs.python.org/3/library/sqlite3.html)
 
 # WIP
-- Google Drive file sync
-- Custom table creation
-- More hands on entry editing
-- Import excel/sheets
+- [ ] Google Drive file sync
+- [x] Custom table creation
+- [ ] More hands on entry editing
+- [ ] Import excel/sheets
