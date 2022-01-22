@@ -38,8 +38,6 @@ def customTableCreate():
         if columnCorrect == "NO":
             return
 
-
-
 def mk_col_names(columnCount):
     increm = 0
     while increm < columnCount:
@@ -62,6 +60,10 @@ def clear():
     os.system("cls" if os.name == 'nt' else 'clear')
 
 def main(tree):
+    clear()
+    file = open("mm.txt", 'r')
+    contents = file.read()
+    print(contents)
     mainWhileLooper = True
     while mainWhileLooper:
         startProgUser = input("Welcome, what would you like to do?\n").upper()

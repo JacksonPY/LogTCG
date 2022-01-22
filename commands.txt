@@ -1,0 +1,8 @@
+_____________________________________________________________________________________
+View all - Views all data available that has been entered into the database table.
+Delete - Delete a data entry based on the ID.
+Help - Shows all commands.
+Search - Searches the database for an entry based on the parameters given.
+Column Names - Shows all the columns that are currently in the table.
+Entry - Enter a set of data into the table based on the parameters given.
+_____________________________________________________________________________________

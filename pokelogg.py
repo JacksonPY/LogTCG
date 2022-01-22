@@ -18,15 +18,10 @@ con.commit()
 tree = {'VIEW ALL':user_view_all,
         'DELETE':user_delete_entry,
         'HELP':user_help_me,
-        #'SNAME':user_search_name_params,
-        #'STYPE':user_search_type,
-        #'SRARITY':user_search_rarity,
-        #'SCARDSET':user_search_cardset,
-        'ENTRY':user_make_entry,
         'CREATE TABLE':customTableCreate,
         'SEARCH':custom_basic_search,
         'COLUMN NAMES':getColumnNames,
-        'CUSTOM ENTRY':custom_entry}
+        'ENTRY':custom_entry}
 
 print('')
 print('Need help? Just type "help"!')
