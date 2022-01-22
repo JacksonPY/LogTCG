@@ -19,10 +19,13 @@ def user_delete_entry():
         print("Failed to delete, your input needs to be an integer (for example 1).")
 
 def custom_basic_search():
+    try:
         customSearchCol = input("Alright, lets do this search. What column are we searching from?: ").upper()
         customSerarchParam = input("Now what is the parameter(s) we are using? (name of the card, type etc.): ").upper()
         cursor.execute(f"SELECT * FROM pokemon where {customSearchCol}=(?)", [customSerarchParam])
         print(cursor.fetchall())
+    except:
+        print("Failed to execute the query! Try again and make sure you have an idea for what you're searching for.")
 
 def getColumnNames():
         exCols = cursor.execute("SELECT * FROM pokemon")
@@ -30,6 +33,7 @@ def getColumnNames():
                 print(cols[0])
 
 def custom_entry():
+    try:
         v = ""
         q = ""
         kk = []
@@ -41,9 +45,12 @@ def custom_entry():
                 kk.append(g)
         q = q[:-2]
         v = v[:-2]
-
         cursor.execute(f"INSERT INTO pokemon ({v}) VALUES ({q})", kk)
         con.commit()
+        print("Data entry success!")
+    except:
+        print("Data entry failed! Try again, make sure you follow the prompts correctly.")
+
 
 
 # old way of doing things. going to use these to look back on.
