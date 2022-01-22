@@ -9,11 +9,11 @@ Clone or download this repo. Open a terminal at the directory of the download an
 
 Windows (its also possible windows users might need to use 'python' instead of 'py'!)
 ```bash
-py pokelogg.py
+py logtcg.py
 ```
 Linux
 ```bash
-python3 pokelogg.py
+python3 logtcg.py
 ```
 Greeting page after launching.
 
