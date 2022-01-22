@@ -1,4 +1,4 @@
-![main](https://github.com/JacksonPY/PokeLogger/blob/main/readmestuff/main.png)
+![main](https://github.com/JacksonPY/LogTCG/blob/main/readmestuff/main.png)
 # PokeLogger - Python 3.10
 Log your pokemon cards locally. Hello! I wanted to make a nice little logging system for a friend who collects Pokemon cards. I suggested to use excel or sheets due to it storing on an external server...however I wanted the challenge as I have never used the SQLite module that is baked into python. I plan to continue updating this as inspiration comes to me! This project is very simple as it is my first time working with SQLite in Python.
 
@@ -19,7 +19,7 @@ python3 logtcg.py
 ```
 Greeting page after launching.
 
-![s1](https://github.com/JacksonPY/PokeLogger/blob/main/readmestuff/s1.png)
+![s1](https://github.com/JacksonPY/LogTCG/blob/main/readmestuff/s1.png)
 
 Typing 'help' will show a list of commands.
 
