@@ -23,7 +23,12 @@ def custom_basic_search():
         customSearchCol = input("Alright, lets do this search. What column are we searching from?: ").upper()
         customSerarchParam = input("Now what is the parameter(s) we are using? (name of the card, type etc.): ").upper()
         cursor.execute(f"SELECT * FROM pokemon where {customSearchCol}=(?)", [customSerarchParam])
-        print(cursor.fetchall())
+        if cursor.fetchall() == []:
+            print("------")
+            print("There is no entry with those parameters!")
+            print("------")
+        else:
+            print(cursor.fetchall())
     except:
         print("Failed to execute the query! Try again and make sure you have an idea for what you're searching for.")
 
