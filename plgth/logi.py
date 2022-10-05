@@ -6,6 +6,8 @@ con = sl.connect('databases/local.db')
 cursor = con.cursor()
 
 
+# TODO - this entire file just needs to change its so poorly written
+
 def tableExists(customTableCreate):
     cursor.execute("SELECT count(name) FROM sqlite_master WHERE type='table' and name = 'pokemon'")
     if cursor.fetchone()[0]==1:
