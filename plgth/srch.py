@@ -1,63 +1,63 @@
 import sqlite3 as sl
 
-con = sl.connect('databases/local.db')
-cursor = con.cursor()
+class Query:
+    def user_view_all(cursor: sl.Cursor):
+        cursor.execute("SELECT * FROM pokemon")
+        print(cursor.fetchall())
+        print('Query Successful!')
 
-def user_view_all():
-    cursor.execute("SELECT * FROM pokemon")
-    print(cursor.fetchall())
-    print('Query Successful!')
 
-def user_delete_entry():
-    try:
-        userDefinedDeletionID = input('What is the ID (first number in the data entry) of the entry you would like to '
-                                      'delete?: ')
-        cursor.execute("DELETE FROM pokemon WHERE id=(?)", userDefinedDeletionID)
-        con.commit()
-        print('Entry deleted')
-    except:
-        print("Failed to delete, your input needs to be an integer (for example 1).")
+    def custom_basic_search(cursor: sl.Cursor):
+        try:
+            customSearchCol = input("Alright, lets do this search. What column are we searching from?: ").upper()
+            customSerarchParam = input("Now what is the parameter(s) we are using? (name of the card, type etc.): ").upper()
+            cursor.execute(f"SELECT * FROM pokemon where {customSearchCol}=(?)", [customSerarchParam])
+            returned_execute = cursor.fetchall()
+            # cursor.fetchall only call the execute once. If it is called again without a new execute, it returns nothing. 
+            # https://stackoverflow.com/questions/63067746/cursor-fetchall-returns-an-empty-list-sometimes
+            if returned_execute == []:
+                print("------")
+                print("There is no entry with those parameters!")
+                print("------")
+            else:
+                print(returned_execute)
+        except:
+            print("Failed to execute the query! Try again and make sure you have an idea for what you're searching for.")
 
-def custom_basic_search():
-    try:
-        customSearchCol = input("Alright, lets do this search. What column are we searching from?: ").upper()
-        customSerarchParam = input("Now what is the parameter(s) we are using? (name of the card, type etc.): ").upper()
-        cursor.execute(f"SELECT * FROM pokemon where {customSearchCol}=(?)", [customSerarchParam])
-        returned_execute = cursor.fetchall()
-        # cursor.fetchall only call the execute once. If it is called again without a new execute, it returns nothing. 
-        # https://stackoverflow.com/questions/63067746/cursor-fetchall-returns-an-empty-list-sometimes
-        if returned_execute == []:
-            print("------")
-            print("There is no entry with those parameters!")
-            print("------")
-        else:
-            print(returned_execute)
-    except:
-        print("Failed to execute the query! Try again and make sure you have an idea for what you're searching for.")
-
-def getColumnNames():
+    def getColumnNames(cursor: sl.Cursor):
         exCols = cursor.execute("SELECT * FROM pokemon")
         for cols in exCols.description[1:]:
                 print(cols[0])
 
-def custom_entry():
-    try:
-        v = ""
-        q = ""
-        kk = []
-        exCols = cursor.execute("SELECT * FROM pokemon")
-        for e in exCols.description[1:]:
-                v += e[0] + ", "
-                q += "?, "
-                g = input(f"Insert entry data for {e[0]}: ").upper()
-                kk.append(g)
-        q = q[:-2]
-        v = v[:-2]
-        cursor.execute(f"INSERT INTO pokemon ({v}) VALUES ({q})", kk)
-        con.commit()
-        print("Data entry success!")
-    except:
-        print("Data entry failed! Try again, make sure you follow the prompts correctly.")
+class Entry:
+    def user_delete_entry(cursor: sl.Cursor, con: sl.Connection):
+        try:
+            userDefinedDeletionID = input('What is the ID (first number in the data entry) of the entry you would like to '
+                                        'delete?: ')
+            cursor.execute("DELETE FROM pokemon WHERE id=(?)", userDefinedDeletionID)
+            con.commit()
+            print('Entry deleted')
+        except:
+            print("Failed to delete, your input needs to be an integer (for example 1).")
+
+    def custom_entry(cursor: sl.Cursor, con: sl.Connection):
+        try:
+            v = ""
+            q = ""
+            kk = []
+            exCols = cursor.execute("SELECT * FROM pokemon")
+            for e in exCols.description[1:]:
+                    v += e[0] + ", "
+                    q += "?, "
+                    g = input(f"Insert entry data for {e[0]}: ").upper()
+                    kk.append(g)
+            q = q[:-2]
+            v = v[:-2]
+            cursor.execute(f"INSERT INTO pokemon ({v}) VALUES ({q})", kk)
+            con.commit()
+            print("Data entry success!")
+        except:
+            print("Data entry failed! Try again, make sure you follow the prompts correctly.")
 
 
 

@@ -1,5 +1,6 @@
 import os
 import sqlite3 as sl
+from inspect import signature
 
 con = sl.connect('databases/local.db')
 cursor = con.cursor()
@@ -72,7 +73,13 @@ def main(tree):
         print('')
 
         if startProgUser in tree:
-            tree.get(startProgUser)()
+            selected_function = tree.get(startProgUser)
+            sig = signature(selected_function)
+            amt_params = sig.parameters
+            if len(amt_params) > 1:
+                selected_function(cursor, con)
+            else:
+                selected_function(cursor)
         elif startProgUser == 'EXIT':
             print("Goodbye!")
             clear()
