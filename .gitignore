@@ -117,3 +117,4 @@ dmypy.json
 local.db
 .idea/
 !.database
+.vscode/launch.json
